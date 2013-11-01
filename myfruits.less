@@ -1,0 +1,124 @@
+
+@myFruitThumbnailMaxWidth: 300;
+
+.MyfruitsEditView {
+  .modal {
+    width: 700px;
+    &.fade {
+      &.in {
+        top: 1%;
+      }
+    }
+  }
+  .modal-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.MyFruitsHeader {
+  h1 {
+    float: left;
+    margin-top: 0px;
+    margin-right: 20px;
+  }
+
+  .search {
+
+    margin-top: 10px;
+    margin-bottom: 0px;
+    input[type="text"] {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.MyFruitsThumbnails {
+
+  margin-left: auto;
+  margin-right: auto;
+
+  .MyFruitsThumbnail {
+
+    @media (max-width: 767px) {
+      float: left;
+      margin-left: 20px;
+     }
+
+    .thumbnailWidthLoop (@maxWidth) when (@maxWidth > 0) {
+      @percentWidth: @myFruitThumbnailMaxWidth / @maxWidth * 100;
+      @media (max-width: ~"@{maxWidth}px") {
+        width: ~"@{percentWidth}%";
+      }
+      .thumbnailWidthLoop(@maxWidth - @myFruitThumbnailMaxWidth);
+    }
+    .thumbnailWidthLoop (0) {}
+    .thumbnailWidthLoop (2700);
+
+    .thumbnail {
+      overflow: hidden;
+      padding-bottom: 0px;
+    }
+
+    .well {
+      padding: 5px;
+      border-radius: 0px;
+      -webkit-border-radius: 0px;
+
+    }
+
+    .Image {
+      width: 100%;
+      height: 250px;
+      margin-bottom: 5px;
+      background-repeat: no-repeat;
+      background-position:center;
+      background-size: 200%;
+
+    }
+
+    .Info {
+      background-color: #F9F9F9;
+      margin-bottom: -5px;
+      margin-left: -5px;
+      min-height: 60px;
+      height: 100%;
+      width: 100%;
+
+      .type {
+        text-align: center;
+        h4 {
+          margin: 0px;
+        }
+      }
+
+      .name {
+        text-align: center;
+      }
+
+      .has-no-name {
+        margin-bottom: 20px;
+      }
+
+      .navbar {
+        .quantity {
+          float: left;
+          font-style: italic;
+        }
+        .buttons {
+          text-align: right;
+        }
+      }
+
+      i {
+        color: #666;
+        cursor: pointer;
+        &:hover {
+          color: #000;
+        }
+      }
+
+    }
+  }
+
+}
